@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>SharpBrake</id>
+    <version>2.2.1</version>
+    <title>SharpBrake</title>
+    <authors>Asbjørn Ulsberg,  Michael Friis</authors>
+    <owners>Asbjørn Ulsberg,  Michael Friis</owners>
+    <licenseUrl>https://github.com/asbjornu/SharpBrake/blob/master/MIT-LICENSE</licenseUrl>
+    <projectUrl>https://github.com/asbjornu/SharpBrake</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Airbrake Notifier for .NET</description>
+    <releaseNotes>SharpBrake now supports the configuration of Airbrake.ServerUri in case you have a local Airbrake server you want to send issues to.</releaseNotes>
+    <copyright>Copyright 2012</copyright>
+    <language />
+    <tags>Logging Airbrake Issues</tags>
+    <dependencies>
+      <dependency id="Common.Logging" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Configuration" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Core" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Web" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Xml" targetFramework="" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

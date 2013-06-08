@@ -1,0 +1,9 @@
+﻿@model HeroicSupport.Web.Models.SubmitTicket.ReplyForm
+@{
+	Layout = null;
+}
+
+@using (Html.BeginForm<TicketController>(c => c.Reply(null)))
+{
+	@Html.HorizontalFormForModel(submitButtonText:"Reply")
+}

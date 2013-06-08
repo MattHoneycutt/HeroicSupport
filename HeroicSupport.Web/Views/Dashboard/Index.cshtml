@@ -1,0 +1,30 @@
+﻿@model HeroicSupport.Web.Models.Dashboard.DashboardViewModel
+
+@{
+	ViewBag.Title = "Dashboard";
+}
+
+<h2>Welcome!</h2>
+<p>Here are your existing support issues: </p>
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Last Update</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for (var i = 0; i < Model.Tickets.Length; i++)
+		{
+			<tr>
+				<td>@Html.DisplayFor(m => m.Tickets[i].Subject)</td>
+				<td>@Html.DisplayFor(m => m.Tickets[i].LastUpdated)</td>
+				<td>@(Html.ActionLink<TicketController>(c => c.ViewTicket(Model.Tickets[i].TicketID), "View"))</td>
+			</tr>
+		}
+	</tbody>
+</table>
+<p>
+	@(Html.ActionLink<TicketController>(c => c.Add(), "New Ticket", new{@class="btn btn-primary"}))
+</p>

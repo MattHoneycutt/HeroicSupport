@@ -1,0 +1,25 @@
+﻿@model dynamic
+
+<fieldset class="form-horizontal">
+	@foreach (var prop in ViewData.ModelMetadata.Properties.Where(p => p.ShowForEdit))
+	{
+		if (prop.TemplateHint == "HiddenInput")
+		{
+			@Html.Hidden(prop.PropertyName)
+		}
+		else
+		{
+			using (Html.ControlGroupFor(prop.PropertyName))
+			{
+				@Html.Label(prop.PropertyName,  new {@class="control-label"})
+				<div class="controls">
+					@Html.Editor(prop.PropertyName)
+					@Html.ValidationMessage(prop.PropertyName, null, new{@class="help-inline"})
+				</div>
+			}			
+		}
+	}
+	<div class="form-actions">
+        <button type="submit" class="btn btn-primary">@(ViewBag._SubmitButton)</button>
+    </div>
+</fieldset>

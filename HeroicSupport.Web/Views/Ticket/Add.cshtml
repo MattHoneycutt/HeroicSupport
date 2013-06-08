@@ -1,0 +1,11 @@
+﻿@model HeroicSupport.Web.Models.SubmitTicket.AddForm
+
+@{
+	ViewBag.Title = "New Help Request";
+}
+
+<h2>New Help Request</h2>
+@using (Html.BeginForm())
+{
+	@Html.HorizontalFormForModel()
+}

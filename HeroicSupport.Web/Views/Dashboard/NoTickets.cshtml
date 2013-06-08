@@ -1,0 +1,11 @@
+﻿@model dynamic
+
+@{
+	ViewBag.Title = "No Tickets!";
+}
+
+<h2>There are no tickets yet!</h2>
+<p>There is nothing to do yet.  Try creating a ticket!</p>
+<p>
+	@(Html.ActionLink<TicketController>(c => c.Add(), "New Ticket", new{@class="btn btn-primary"}))
+</p>

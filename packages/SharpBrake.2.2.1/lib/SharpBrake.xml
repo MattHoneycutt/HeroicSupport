@@ -1,0 +1,785 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SharpBrake</name>
+    </assembly>
+    <members>
+        <member name="T:SharpBrake.AirbrakeResponseError">
+            <summary>
+            Contains the error message returned from Airbrake.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.AirbrakeResponseError.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.AirbrakeResponseError"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:SharpBrake.AirbrakeResponseError.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="P:SharpBrake.AirbrakeResponseError.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:SharpBrake.Serialization.AirbrakeTraceLine">
+            <summary>
+            Required. This element can occur more than once. Each line element describes one
+            code location or frame in the backtrace when the error occurred, and requires
+            @file and @number attributes. If the location includes a method or function, the
+            @method attribute should be used.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.Serialization.AirbrakeTraceLine.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.Serialization.AirbrakeTraceLine"/> class.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.Serialization.AirbrakeTraceLine.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.Serialization.AirbrakeTraceLine"/> class.
+            </summary>
+            <param name="file">The file.</param>
+            <param name="lineNumber">The line number.</param>
+        </member>
+        <member name="M:SharpBrake.Serialization.AirbrakeTraceLine.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeTraceLine.File">
+            <summary>
+            Gets or sets the file the error occurred in.
+            </summary>
+            <value>
+            The file.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeTraceLine.LineNumber">
+            <summary>
+            Gets or sets the line number of the file in which the error occurred.
+            </summary>
+            <value>
+            The line number.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeTraceLine.Method">
+            <summary>
+            Gets or sets the method in which the error occurred.
+            </summary>
+            <value>
+            The method.
+            </value>
+        </member>
+        <member name="T:SharpBrake.Serialization.AirbrakeNotifier">
+            <summary>
+            The class that identifies HopSharp as the library sending errors to Airbrake.
+            </summary>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeNotifier.Name">
+            <summary>
+            Required. The name of the notifier client submitting the request.
+            </summary>
+            <value>
+            The name of the notifier client submitting the request.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeNotifier.Url">
+            <summary>
+            Required. A URL at which more information can be obtained concerning the notifier client.
+            </summary>
+            <value>
+            A URL at which more information can be obtained concerning the notifier client.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeNotifier.Version">
+            <summary>
+            Required. The version number of the notifier client submitting the request.
+            </summary>
+            <value>
+            The version number of the notifier client submitting the request.
+            </value>
+        </member>
+        <member name="T:SharpBrake.Serialization.AirbrakeNotice">
+            <summary>
+            The root notice class that encapsulate the error being sent to Airbrake.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.Serialization.AirbrakeNotice.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.Serialization.AirbrakeNotice"/> class.
+            For API Version 2.2
+            </summary>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeNotice.ApiKey">
+            <summary>
+            Required. The API key for the project that this error belongs to. The API key can be found by viewing the edit project form on the Airbrake site.
+            </summary>
+            <value>
+            The API key for the project that this error belongs to. The API key can be found by viewing the edit project form on the Airbrake site.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeNotice.Error">
+            <summary>
+            Gets or sets the error.
+            </summary>
+            <value>
+            The error.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeNotice.Notifier">
+            <summary>
+            Gets or sets the notifier.
+            </summary>
+            <value>
+            The notifier.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeNotice.Request">
+            <summary>
+            Optional. If this error occurred during an HTTP request, the children of this element can be used to describe the request that caused the error.
+            </summary>
+            <value>
+            The children of this element can be used to describe the request that caused the error.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeNotice.ServerEnvironment">
+            <summary>
+            Gets or sets the server environment.
+            </summary>
+            <value>
+            The server environment.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeNotice.Version">
+            <summary>
+            Required. The version of the API being used. Should be set to "2.2".
+            </summary>
+            <value>
+            The version of the API being used. Should be set to "2.2".
+            </value>
+        </member>
+        <member name="T:SharpBrake.AirbrakeResponse">
+            <summary>
+            The response received from Airbrake.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.AirbrakeResponse.#ctor(System.Net.WebResponse,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.AirbrakeResponse"/> class.
+            </summary>
+            <param name="response">The response.</param>
+            <param name="content">The content.</param>
+        </member>
+        <member name="P:SharpBrake.AirbrakeResponse.Content">
+            <summary>
+            Gets the content.
+            </summary>
+        </member>
+        <member name="P:SharpBrake.AirbrakeResponse.ContentLength">
+            <summary>
+            Gets the length of the content.
+            </summary>
+            <value>
+            The length of the content.
+            </value>
+        </member>
+        <member name="P:SharpBrake.AirbrakeResponse.ContentType">
+            <summary>
+            Gets the type of the content.
+            </summary>
+            <value>
+            The type of the content.
+            </value>
+        </member>
+        <member name="P:SharpBrake.AirbrakeResponse.Errors">
+            <summary>
+            Gets the errors.
+            </summary>
+        </member>
+        <member name="P:SharpBrake.AirbrakeResponse.Headers">
+            <summary>
+            Gets the headers.
+            </summary>
+        </member>
+        <member name="P:SharpBrake.AirbrakeResponse.IsFromCache">
+            <summary>
+            Gets a value indicating whether this instance is from cache.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is from cache; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:SharpBrake.AirbrakeResponse.IsMutuallyAuthenticated">
+            <summary>
+            Gets a value indicating whether this instance is mutually authenticated.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is mutually authenticated; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:SharpBrake.AirbrakeResponse.Notice">
+            <summary>
+            Gets the notice returned from Airbrake.
+            </summary>
+        </member>
+        <member name="P:SharpBrake.AirbrakeResponse.ResponseUri">
+            <summary>
+            Gets the response URI.
+            </summary>
+        </member>
+        <member name="T:SharpBrake.Serialization.AirbrakeRequest">
+            <summary>
+            Optional. If this error occurred during an HTTP request, the children of this element can be used to describe the request that caused the error.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.Serialization.AirbrakeRequest.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.Serialization.AirbrakeRequest"/> class.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.Serialization.AirbrakeRequest.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.Serialization.AirbrakeRequest"/> class.
+            </summary>
+            <param name="url">The URL.</param>
+            <param name="component">The component in which the error occurred. In model-view-controller frameworks like Rails, this should be set to the controller. Otherwise, this can be set to a route or other request category.</param>
+        </member>
+        <member name="M:SharpBrake.Serialization.AirbrakeRequest.#ctor(System.Uri,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.Serialization.AirbrakeRequest"/> class.
+            </summary>
+            <param name="url">The URL.</param>
+            <param name="component">The component in which the error occurred. In model-view-controller frameworks like Rails, this should be set to the controller. Otherwise, this can be set to a route or other request category.</param>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeRequest.Action">
+            <summary>
+            Optional. The action in which the error occurred. If each request is routed to a controller action, this should be set here. Otherwise, this can be set to a method or other request subcategory.
+            </summary>
+            <value>
+            The action in which the error occurred. If each request is routed to a controller action, this should be set here. Otherwise, this can be set to a method or other request subcategory.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeRequest.CgiData">
+            <summary>
+            Optional. A list of var elements describing CGI variables from the request, such as SERVER_NAME and REQUEST_URI.
+            </summary>
+            <value>
+            A list of var elements describing CGI variables from the request, such as SERVER_NAME and REQUEST_URI.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeRequest.Component">
+            <summary>
+            Required only if there is a request element. The component in which the error occurred. In model-view-controller frameworks like Rails, this should be set to the controller. Otherwise, this can be set to a route or other request category.
+            </summary>
+            <value>
+            The component in which the error occurred. In model-view-controller frameworks like Rails, this should be set to the controller. Otherwise, this can be set to a route or other request category.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeRequest.Params">
+            <summary>
+            Optional. A list of var elements describing request parameters from the query string, POST body, routing, and other inputs.
+            </summary>
+            <value>
+            A list of var elements describing request parameters from the query string, POST body, routing, and other inputs.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeRequest.Session">
+            <summary>
+            Optional. A list of var elements describing session variables from the request.
+            </summary>
+            <value>
+            A list of var elements describing session variables from the request.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeRequest.Url">
+            <summary>
+            Required only if there is a request element. The URL at which the error occurred.
+            </summary>
+            <value>
+            The URL at which the error occurred.
+            </value>
+        </member>
+        <member name="T:SharpBrake.Serialization.AirbrakeResponseNotice">
+            <summary>
+            The notice returned from Airbrake.
+            </summary>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeResponseNotice.ErrorId">
+            <summary>
+            Gets the error id.
+            </summary>
+            <value>
+            The error id.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeResponseNotice.Id">
+            <summary>
+            Gets the id of the created notice.
+            </summary>
+            <value>
+            The id of the created notice.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeResponseNotice.Url">
+            <summary>
+            Gets the URL of the created notice.
+            </summary>
+            <value>
+            The URL of the created notice.
+            </value>
+        </member>
+        <member name="T:SharpBrake.Extensions">
+            <summary>
+            Contains the extension method to send exceptions to Airbrake.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.Extensions.SendToAirbrake(System.Exception)">
+            <summary>
+            Sends the <paramref name="exception"/> to Airbrake.
+            </summary>
+            <param name="exception">The exception to send to Airbrake.</param>
+        </member>
+        <member name="M:SharpBrake.Extensions.BuildErrors(System.Xml.XmlReader)">
+            <summary>
+            Builds the errors from the <see cref="T:System.Xml.XmlReader"/>.
+            </summary>
+            <param name="reader">The reader.</param>
+            <returns>
+            An <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </returns>
+        </member>
+        <member name="M:SharpBrake.Extensions.BuildNotice(System.Xml.XmlReader)">
+            <summary>
+            Builds the notice from the <see cref="T:System.Xml.XmlReader"/>.
+            </summary>
+            <param name="reader">The reader.</param>
+            <returns>
+            A new instance of <see cref="T:SharpBrake.Serialization.AirbrakeResponseNotice"/>.
+            </returns>
+        </member>
+        <member name="M:SharpBrake.Extensions.TryGet``2(``0,System.Func{``0,``1})">
+            <summary>
+            Tries to invoke the <paramref name="getter"/>. Returns <c>default(TResult)</c>
+            if the invocation fails.
+            </summary>
+            <typeparam name="TObject">The type of the object.</typeparam>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="instance">The instance.</param>
+            <param name="getter">The getter.</param>
+            <returns>
+            The value returned from <paramref name="getter"/> or <c>default(TResult)</c>
+            if the invocation fails.
+            </returns>
+        </member>
+        <member name="T:SharpBrake.AirbrakeNoticeBuilder">
+            <summary>
+            Responsible for building the notice that is sent to Airbrake.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.AirbrakeNoticeBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.AirbrakeNoticeBuilder"/> class.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.AirbrakeNoticeBuilder.#ctor(SharpBrake.AirbrakeConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.AirbrakeNoticeBuilder"/> class.
+            </summary>
+            <param name="configuration">The configuration.</param>
+        </member>
+        <member name="M:SharpBrake.AirbrakeNoticeBuilder.ErrorFromException(System.Exception)">
+            <summary>
+            Creates a <see cref="T:SharpBrake.Serialization.AirbrakeError"/> from the the specified exception.
+            </summary>
+            <param name="exception">The exception.</param>
+            <returns>
+            A <see cref="T:SharpBrake.Serialization.AirbrakeError"/>, created from the the specified exception.
+            </returns>
+        </member>
+        <member name="M:SharpBrake.AirbrakeNoticeBuilder.Notice(SharpBrake.Serialization.AirbrakeError)">
+            <summary>
+            Creates a <see cref="T:SharpBrake.Serialization.AirbrakeNotice"/> from the the specified error.
+            </summary>
+            <param name="error">The error.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpBrake.AirbrakeNoticeBuilder.Notice(System.Exception)">
+            <summary>
+            Creates a <see cref="T:SharpBrake.Serialization.AirbrakeNotice"/> from the the specified exception.
+            </summary>
+            <param name="exception">The exception.</param>
+            <returns>
+            A <see cref="T:SharpBrake.Serialization.AirbrakeNotice"/>, created from the the specified exception.
+            </returns>
+        </member>
+        <member name="P:SharpBrake.AirbrakeNoticeBuilder.Configuration">
+            <summary>
+            Gets the configuration.
+            </summary>
+        </member>
+        <member name="P:SharpBrake.AirbrakeNoticeBuilder.Notifier">
+            <summary>
+            Gets the notifier.
+            </summary>
+        </member>
+        <member name="P:SharpBrake.AirbrakeNoticeBuilder.ServerEnvironment">
+            <summary>
+            Gets the server environment.
+            </summary>
+        </member>
+        <member name="T:SharpBrake.AirbrakeClient">
+            <summary>
+            The client responsible for communicating exceptions to the Airbrake service.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.AirbrakeClient.#ctor(SharpBrake.AirbrakeConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.AirbrakeClient"/> class.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.AirbrakeClient.Send(System.Exception)">
+            <summary>
+            Sends the specified exception to Airbrake.
+            </summary>
+            <param name="exception">The e.</param>
+        </member>
+        <member name="M:SharpBrake.AirbrakeClient.Send(SharpBrake.Serialization.AirbrakeNotice)">
+            <summary>
+            Sends the specified notice to Airbrake.
+            </summary>
+            <param name="notice">The notice.</param>
+        </member>
+        <member name="E:SharpBrake.AirbrakeClient.RequestEnd">
+            <summary>
+            Occurs when the request ends.
+            </summary>
+        </member>
+        <member name="T:SharpBrake.Serialization.AirbrakeVar">
+            <summary>
+            The params, session, and cgi-data elements can contain one or more var elements for each parameter or variable that was set when the error occurred. Each var element should have a @key attribute for the name of the variable, and element text content for the value of the variable.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.Serialization.AirbrakeVar.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.Serialization.AirbrakeVar"/> class.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.Serialization.AirbrakeVar.#ctor(System.String,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.Serialization.AirbrakeVar"/> class.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:SharpBrake.Serialization.AirbrakeVar.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object"/> is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object"/> to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified <see cref="T:System.Object"/> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+            <exception cref="T:System.NullReferenceException">
+            The <paramref name="obj"/> parameter is null.
+              </exception>
+        </member>
+        <member name="M:SharpBrake.Serialization.AirbrakeVar.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            </returns>
+        </member>
+        <member name="M:SharpBrake.Serialization.AirbrakeVar.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeVar.Key">
+            <summary>
+            Required. The key of the var, like <c>SERVER_NAME</c> or <c>REQUEST_URI</c>.
+            </summary>
+            <value>
+            The key of the var, like <c>SERVER_NAME</c> or <c>REQUEST_URI</c>.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeVar.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="T:SharpBrake.Serialization.AirbrakeError">
+            <summary>
+            Represents the Airbrake "error" element.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.Serialization.AirbrakeError.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.Serialization.AirbrakeError"/> class.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.Serialization.AirbrakeError.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeError.Backtrace">
+            <summary>
+            Required. Each line element describes one code location or frame in the backtrace when the
+            error occurred.
+            </summary>
+            <value>
+            Each line element describes one code location or frame in the backtrace when the error occurred.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeError.Class">
+            <summary>
+            Required. The class name or type of error that occurred.
+            </summary>
+            <value>
+            The class name or type of error that occurred.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeError.Message">
+            <summary>
+            Optional. A short message describing the error that occurred.
+            </summary>
+            <value>
+            A short message describing the error that occurred.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeError.CatchingMethod">
+            <summary>
+            Gets or sets the method that had the <c>catch</c> which created this <see cref="T:SharpBrake.Serialization.AirbrakeError"/>.
+            </summary>
+            <value>
+            The method that had the <c>catch</c> which created this <see cref="T:SharpBrake.Serialization.AirbrakeError"/>.
+            </value>
+        </member>
+        <member name="T:SharpBrake.NotifierHttpModule">
+            <summary>
+            The <see cref="T:System.Web.IHttpModule"/> that notifies Airbrake of unhandled exceptions in the application.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.NotifierHttpModule.Dispose">
+            <summary>
+            Disposes of the resources (other than memory) used by the module that implements <see cref="T:System.Web.IHttpModule"/>.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.NotifierHttpModule.Init(System.Web.HttpApplication)">
+            <summary>
+            Initializes a module and prepares it to handle requests.
+            </summary>
+            <param name="application">An <see cref="T:System.Web.HttpApplication"/> that provides access to the methods, properties, and events common to all application objects within an ASP.NET application</param>
+        </member>
+        <member name="M:SharpBrake.NotifierHttpModule.ApplicationError(System.Object,System.EventArgs)">
+            <summary>
+            Notifies Airbrake of the unhandled application error that occurred.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:SharpBrake.RequestEndEventArgs">
+            <summary>
+            The event arguments passed to <see cref="T:SharpBrake.RequestEndEventHandler"/>.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.RequestEndEventArgs.#ctor(System.Net.WebRequest,System.Net.WebResponse,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.RequestEndEventArgs"/> class.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="response">The response.</param>
+            <param name="content">The body of the response.</param>
+        </member>
+        <member name="P:SharpBrake.RequestEndEventArgs.Request">
+            <summary>
+            Gets the request.
+            </summary>
+        </member>
+        <member name="P:SharpBrake.RequestEndEventArgs.Response">
+            <summary>
+            Gets the response.
+            </summary>
+        </member>
+        <member name="T:SharpBrake.Serialization.CleanXmlSerializer`1">
+            <summary>
+            Wraps XML serialization and doesn't generate processing instructions on document start 
+            as well as xsi and xsd namespace definitions
+            </summary>
+            <typeparam name="T">The type object to serialize.</typeparam>
+        </member>
+        <member name="T:SharpBrake.Serialization.CleanXmlSerializer">
+            <summary>
+            Wraps XML serialization and doesn't generate processing instructions on document start 
+            as well as xsi and xsd namespace definitions
+            </summary>
+        </member>
+        <member name="M:SharpBrake.Serialization.CleanXmlSerializer.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.Serialization.CleanXmlSerializer`1"/> class.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.Serialization.CleanXmlSerializer.ToXml(System.Object)">
+            <summary>
+            Serializes the <paramref name="source"/> to XML.
+            </summary>
+            <param name="source">The source.</param>
+            <returns>
+            The <paramref name="source"/> serialized to XML.
+            </returns>
+        </member>
+        <member name="M:SharpBrake.Serialization.CleanXmlSerializer.ToXml``1(``0)">
+            <summary>
+            Serializes the <paramref name="source"/> to XML.
+            </summary>
+            <typeparam name="T">The type of the object that is to be serialized.</typeparam>
+            <param name="source">The source.</param>
+            <returns>
+            The <paramref name="source"/> serialized to XML.
+            </returns>
+        </member>
+        <member name="M:SharpBrake.Serialization.CleanXmlSerializer`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.Serialization.CleanXmlSerializer`1"/> class.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.Serialization.CleanXmlSerializer`1.ToXml(`0)">
+            <summary>
+            Serializes the <paramref name="source"/> to XML.
+            </summary>
+            <param name="source">The source.</param>
+            <returns>
+            The <paramref name="source"/> serialized to XML.
+            </returns>
+        </member>
+        <member name="T:SharpBrake.Serialization.AirbrakeServerEnvironment">
+            <summary>
+            Contains information about the environment in which the error occurred.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.Serialization.AirbrakeServerEnvironment.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.Serialization.AirbrakeServerEnvironment"/> class.
+            </summary>
+            <param name="environmentName">Name of the environment.</param>
+        </member>
+        <member name="M:SharpBrake.Serialization.AirbrakeServerEnvironment.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.Serialization.AirbrakeServerEnvironment"/> class.
+            </summary>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeServerEnvironment.AppVersion">
+            <summary>
+            Optional. The version of the application that this error came from.
+            If the App Version is set on the project, then errors older than the project's app version will be ignored.
+            This version field uses "Semantic Versioning" style versioning.
+            </summary>
+            <value>
+            The app version.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeServerEnvironment.EnvironmentName">
+            <summary>
+            Required. The name of the server environment in which the error occurred, such as "staging" or "production."
+            </summary>
+            <value>
+            The name of the environment.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeServerEnvironment.Hostname">
+            <summary>
+            Optional. The name of the host.
+            </summary>
+            <value>
+            The name of the host.
+            </value>
+        </member>
+        <member name="P:SharpBrake.Serialization.AirbrakeServerEnvironment.ProjectRoot">
+            <summary>
+            Optional. The path to the project in which the error occurred, such as RAILS_ROOT or DOCUMENT_ROOT.
+            </summary>
+            <value>
+            The project root.
+            </value>
+        </member>
+        <member name="T:SharpBrake.RequestEndEventHandler">
+            <summary>
+            Occurs when a request ends.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:SharpBrake.RequestEndEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:SharpBrake.AirbrakeConfiguration">
+            <summary>
+            Configuration class for Airbrake.
+            </summary>
+        </member>
+        <member name="M:SharpBrake.AirbrakeConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SharpBrake.AirbrakeConfiguration"/> class.
+            </summary>
+        </member>
+        <member name="P:SharpBrake.AirbrakeConfiguration.AppVersion">
+            <summary>
+            Gets or sets the app version.
+            </summary>
+            <value>
+            The app version.
+            </value>
+        </member>
+        <member name="P:SharpBrake.AirbrakeConfiguration.ApiKey">
+            <summary>
+            Gets or sets the API key.
+            </summary>
+            <value>
+            The API key.
+            </value>
+        </member>
+        <member name="P:SharpBrake.AirbrakeConfiguration.ServerUri">
+            <summary>
+            Gets or sets the AirBrake server location.
+            </summary>
+        </member>
+        <member name="P:SharpBrake.AirbrakeConfiguration.EnvironmentName">
+            <summary>
+            Gets or sets the name of the environment.
+            </summary>
+            <value>
+            The name of the environment.
+            </value>
+        </member>
+        <member name="P:SharpBrake.AirbrakeConfiguration.ProjectRoot">
+            <summary>
+            Gets or sets the project root. By default set to  <see cref="P:System.Web.HttpRequest.ApplicationPath"/>
+            if <see cref="P:System.Web.HttpContext.Current"/> is not null, else <see cref="P:System.Environment.CurrentDirectory"/>. 
+            </summary>
+            <remarks>
+            Only set this if you need to override the default project root.
+            </remarks>
+            <value>
+            The project root.
+            </value>
+        </member>
+    </members>
+</doc>

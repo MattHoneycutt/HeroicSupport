@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>MvcDisplayTemplates</id>
+    <version>3.0.0</version>
+    <title>MvcDisplayTemplates</title>
+    <authors>Matt Honeycutt</authors>
+    <owners>Matt Honeycutt</owners>
+    <projectUrl>https://github.com/MattHoneycutt/MvcDisplayTemplates</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Adds Razor DisplayTemplates that match the default templates embedded in System.Web.Mvc.  These are meant to serve as a starting point for creating your own display templates.  
+		They also add a little bit of magic to make ASP.NET MVC applications testable by SpecsFor.Mvc.</description>
+    <releaseNotes />
+    <copyright>Copyright 2012</copyright>
+    <language />
+    <tags>ASP.NET MVC SpecsFor.Mvc</tags>
+    <dependencies>
+      <dependency id="Mvc4Futures" version="4.0.20710.0" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,67 @@
+﻿@model HeroicSupport.Web.Models.Dashboard.TicketViewModel
+
+@{
+	ViewBag.Title = "Ticket - " + Model.Subject;
+}
+
+<h3>
+	@Model.Subject
+	<span class="pull-right">Received @Model.DateReceived</span>
+</h3>
+
+<div class="well">
+	<div class="pull-left">
+		@Html.RenderGravatarImage(Model.SubmittedBy, 64)	
+	</div>
+	<p class="lead" style="margin-left: 4em">
+		@Model.Body	
+	</p>
+	<div class="clearfix"></div>
+	<div class="form-horizontal">
+		<div class="control-group tm-group">
+			<div class="control-label" style="width: 60px">Tags:</div>
+			<div class="controls" style="margin-left: 80px">
+				<input type="hidden" id="tags-hidden" name="tags-hidden" data-bind="value: tags"/>
+				<input type="text" name="tags" placeholder="Tags" class="tm-input tm-input-info"/>
+				<button class="btn btn-primary" data-bind="click: saveTags"><i class="icon-check icon-white"></i> Save Tags</button>
+			</div>
+		</div>
+	</div>
+</div>
+@if (!Model.Replies.Any())
+{
+	<p class="alert-info alert">There are no replies to this ticket yet.</p>
+}
+else
+{
+	<ul class="media-list" id="replies">
+		@for (var i = 0; i < Model.Replies.Length; i++)
+		{
+			<li class="media" style="padding-bottom:0.5em; border-bottom: 1px solid #e5e5e5">
+				<a href="#">@Html.RenderGravatarImage(Model.Replies[i].UserEmailAddress, 64)</a>
+				<div class="media-body">
+					<h4 class="media-heading">At @Html.DisplayFor(m => m.Replies[i].SentAt), @Html.DisplayFor(m => m.Replies[i].UserEmailAddress) said...</h4>
+					@Html.DisplayFor(m => m.Replies[i].Body)
+				</div>
+			</li>
+		}
+	</ul>
+}
+
+@{Html.RenderAction<TicketController>(c => c.Reply(Model.TicketID));}
+
+@section Scripts
+{
+	<script type="text/javascript">
+		$(function() {
+			$("#replies>li>a:even").addClass("pull-left");
+			$("#replies>li>a:odd").addClass("pull-right");
+			$(".tm-input").tagsManager({
+				hiddenTagListId: "tags-hidden",
+				prefilled: "@Model.Tags"
+			});
+		});
+
+		ko.applyBindings(new TicketModel("@Model.TicketID", new TagService("@(Html.BuildUrlFromExpression<TicketController>(c => c.SaveTags(null, null)))"), new Page()));
+	</script>
+}
