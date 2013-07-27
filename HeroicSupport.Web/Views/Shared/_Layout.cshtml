@@ -35,8 +35,8 @@
 					{
 						<div class="nav-collapse collapse">
 							<ul class="nav">
-								<li>@(Html.ActionLink<DashboardController>(c => c.Index(), "Dashboard"))</li>
-								<li>@(Html.ActionLink<TicketController>(c => c.Add(), "New Ticket"))</li>
+								@(Html.MenuLink<DashboardController>(c => c.Index(), "Dashboard"))
+								@(Html.MenuLink<TicketController>(c => c.Add(), "New Ticket"))
 							</ul>
 							
 							<ul class="nav pull-right">

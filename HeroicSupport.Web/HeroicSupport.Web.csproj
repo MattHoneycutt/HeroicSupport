@@ -153,6 +153,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="ActionResults\LoginResult.cs" />
+    <Compile Include="Helpers\LinkHelpers.cs" />
     <Compile Include="Infrastructure\Security\CurrentUser.cs" />
     <Compile Include="Infrastructure\Security\ICurrentUser.cs" />
     <Compile Include="Controllers\RegisterNewUserController.cs" />
